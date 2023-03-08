@@ -1,0 +1,30 @@
+#!/bin/sh
+
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+ 
+dwm_setbackground &
+# xcompmgr &
+picom &
+dunst &
+xset r rate 300 50 &
+xmodmap ~/.config/xmodmap/xmodmaprc
+sxhkd &
+unclutter --timeout 3 &
+# low_battery &
+xhost +si:localuser:$USER
+# xautolock -time 1 -notify 60 -locker slock &
+
+dwmblocks &
+
+# while type exec $(dbus-launch --exit-with-session dwm) > /dev/null; do exec $(dbus-launch --exit-with-session dwm) & continue || break ; done
+# exec $(dbus-launch --exit-with-session dwm)
+while type dwm > /dev/null
+do 
+    dwm &
+
+    if [ $(cat ${HOME}/.kill_dwm) = "kill_dwm" ]
+	then
+	    echo "dont kill dwm" > "${HOME}/.kill_dwm"
+	    break
+	fi
+done

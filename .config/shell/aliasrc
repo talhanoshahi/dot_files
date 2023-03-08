@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# sudo not required for some system commands
+# for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+	# alias $command="sudo $command"
+# done; unset command
+
+# se() { cd ~/.local/bin; $EDITOR $(fzf) ;}
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	mkdir="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+	cat="lolcat"
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls -hNCF --group-directories-first --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff="diff --color=auto"
+    alias ccat="highlight --out-format=ansi"
+    alias ip="ip -color=auto"
+fi
+
+# some more ls aliases
+alias la='ls -AF'
+alias ll='ls -lh'
+alias lla='ls -lha'
+
+#alias to find the folder size
+alias folder-size-recursive="du -h"
+alias folder-size-total="du -ch"
+alias folder-size="du -sh"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="shutdown -h now" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="pacman" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	xq="xbps-query" \
+	z="zathura" \
+	nv="nvim" \
+	emacs="/usr/bin/emacsclient -c -a=/usr/bin/emacs" \
+	emdm="/usr/bin/emacs --daemon"
+	
+# apt aliases
+alias \
+	aup="sudo apt update && sudo apt upgrade" \
+	aupd="sudo apt update" \
+	aupg="sudo apt upgrade" \
+	alist="apt list" \
+	aser="apt search" \
+	ains="sudo apt install"

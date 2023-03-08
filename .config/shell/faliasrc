@@ -1,0 +1,34 @@
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias bc="bc -ql"
+alias mkdir="mkdir -pv"
+alias yt="yt-dlp --embed-metadata -i"
+alias yta="yt -x -f bestaudio/best"
+alias ffmpeg="ffmpeg -hide_banner"
+alias cat="lolcat"
+
+alias ls='ls -hNCF --group-directories-first --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+alias ip="ip -color=auto"
+
+# some more ls aliases
+alias la='ls -AF'
+alias ll='ls -lh'
+alias lr='ls -hR'
+alias lla='ls -lhA'
+alias llr='ls -lhR'
+alias lra='ls -AhR'
+alias llra='ls -lAhR'
+
+#alias to find the folder size
+alias folder-size-recursive="du -h"
+alias folder-size-total="du -ch"
+alias folder-size="du -sh"

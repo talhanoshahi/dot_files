@@ -1,0 +1,35 @@
+general {
+	output_format = "i3bar"
+	interval = 5
+}
+
+order += "wireless wlp2s0b1"
+order += "read_file uptime"
+order += "cpu_usage"
+order += "load"
+order += "disk /"
+order += "tztime local"
+
+wireless "wlp2s0b1" {
+	format_up = "W: (%quality at %essid, %bitrate / %frequency) %ip"
+}
+
+cpu_usage {
+	format = "all: %usage CPU_0: %cpu0 CPU_1: %cpu1"
+}
+load {
+    format = "[ load: %1min, %5min, %15min ]"
+}
+
+tztime local {
+        format = "%a %d %b, %Y | %I:%M:%S %p"
+}
+
+disk "/"{
+    format = "Disk: %percentage_used %percentage_avail"
+}
+
+read_file uptime {
+	format = "%title: %content"
+        path = "/proc/uptime"
+}

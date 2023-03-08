@@ -1,0 +1,40 @@
+# My Hotkeys
+
+super + space
+    j4-dmenu-desktop
+
+Print
+    maim -s | xclip -selection clipboard -t image/png
+
+super + shift + Print
+    maim -s | tee ~/pix/ss/$(date +%s).jpg | xclip -selection clipboard -t image/jpg
+
+super + control + Print
+    maim | tee ~/pix/ss/$(date +%s).jpg | xclip -selection clipboard -t image/jpg
+
+super + shift + Return
+    /usr/bin/firefox
+
+super + shift + e
+    dmenu_emoji
+
+super + b
+    bookmark_print
+
+super + shift + b
+    bookmark_add
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    {pactl_increase_volume,pactl_decrease_volume,pactl_toggle_default_sink} && pkill -RTMIN+10 dwmblocks
+
+XF86MonBrightness{Up,Down}
+    brightnessctl s {+2%,2%-}
+
+XF86TouchpadToggle
+    toggle_touchpad
+
+super + Escape
+    dwm_system_action
+
+super + z
+    magnus

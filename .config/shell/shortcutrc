@@ -1,0 +1,18 @@
+# This file contains various command line shortcuts to open different config files
+
+# shortcuts to configuration files
+alias configshorts="nvim ${HOME}/.config/shell/shortcutrc"
+alias configbashrc="nvim ${HOME}/.bashrc"
+alias configaliases="nvim ${HOME}/.config/shell/aliasrc"
+alias confignvim="nvim ${HOME}/.config/nvim/init.vim"
+alias configkeybinds="nvim ${HOME}/.config/sxhkd/sxhkdrc"
+
+# shortcuts to different files containg diffferent things
+alias bookmarksfile="nvim ${HOME}/.local/share/bot/snippets/bookmarks"
+
+# shorcuts to directories containing some important stuff and whatnot 
+shscripts="${HOME}/.local/scripts"
+shshare="${HOME}/.local/share/bot"
+shsource="${HOME}/.local/src"
+shconfigs="${HOME}/.config"
+shuniversity="${HOME}/Documents/bot/bot_codes/university"

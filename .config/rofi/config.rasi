@@ -1,0 +1,25 @@
+configuration {
+	modi: "window,run,ssh,drun,filebrowser";
+/*	fixed-num-lines: true;*/
+	show-icons: true;
+/*	terminal: "rofi-sensible-terminal";*/
+/*	icon-theme: ;*/
+	sidebar-mode: true;
+/*	display-window: ;*/
+/*	display-windowcd: ;*/
+/*	display-run: ;*/
+/*	display-ssh: ;*/
+/*	display-drun: ;*/
+/*	display-combi: ;*/
+/*	display-keys: ;*/
+/*	display-filebrowser: ;*/
+}
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+@theme "/usr/share/rofi/themes/android_notification.rasi"
