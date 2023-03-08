@@ -1,0 +1,8 @@
+#!/bin/sh
+
+sleep 0.2
+
+filepath="$HOME/.local/share/bot/snippets/bookmarks"
+filename="$(ls "$filepath" | dmenu -l 50 -i -p 'Bookmarks file: ')"
+
+xdotool type $(grep -v '^#' $filepath/$filename | dmenu -i -l 38 | cut -d' ' -f1)

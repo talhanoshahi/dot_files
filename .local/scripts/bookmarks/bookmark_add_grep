@@ -1,0 +1,16 @@
+#!/bin/sh
+
+bookmark="$(xclip -o)"
+file="$HOME/.local/share/bot/snippets/bookmarks"
+
+if grep -q "^$bookmark$" "$file"; then
+	notify-send "Already Bookmarked!"
+	exit
+fi
+
+notify-send "Fetching title of the page"
+content="$(wget $bookmark -q -O -)"
+title="$(echo $content | grep -oP '(?<=<title>)(.*?)(?=</title>)')"
+
+echo "$bookmark" "#" "$title" >> "$file"
+notify-send "Bookmark added!" "$bookmark is now saved to the file."

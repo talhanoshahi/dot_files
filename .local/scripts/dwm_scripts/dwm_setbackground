@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Dependencies:
+# convert wal xdotool xwallpaper 
+
+wall_dir=$HOME/pix/wall
+
+wall="$(find "$wall_dir" -type f | shuf -n1)"
+
+convert "$wall" $HOME/.local/share/bg.jpg
+xwallpaper --stretch $HOME/.local/share/bg.jpg
+wal -c
+wal -i $HOME/.local/share/bg.jpg > /dev/null
+# sed -i '*SchemeUrg*' $HOME/.cache/wal/colors-wal-dwm.h
+grep -v ".*SchemeUrg.*" $HOME/.cache/wal/colors-wal-dwm.h > temp_file ; mv -f temp_file $HOME/.cache/wal/colors-wal-dwm.h;
+
+echo "Recompiling dwm with new colors ..."
+$(cd $HOME/.local/src/dwm && sudo make clean install)
+
+echo "Restart dwm for new look!"

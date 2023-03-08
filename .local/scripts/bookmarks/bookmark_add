@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+bookmark="$(xclip -o)"
+filepath="$HOME/.local/share/bot/snippets/bookmarks"
+
+directory_files ()
+{
+    files=""
+    for entry in ${filepath}/*
+    do
+	files="$(echo -e "$files\n$(echo "$entry" | rev | cut -d/ -f1 | rev)")"
+    done
+
+    echo "$files"
+}
+
+filename="$(echo -e "$(directory_files)\nNew File\nQuit" | sed '/^[[:space:]]*$/d' | dmenu -l 38 -i -p 'Action: ')"
+
+case $filename in
+    "New File") filename=$(true | dmenu -p "New Filename: ") ;;
+    "Quit") exit ;;
+esac
+
+[ -z $filename ] && exit
+
+if grep -q "^$bookmark" $filepath/*; then
+	notify-send "Already Bookmarked!"
+	exit
+fi
+
+notify-send "Fetching title of the page"
+content="$(wget $bookmark -q -O -)"
+title="$(echo $content | grep -oP '(?<=<title>)(.*?)(?=</title>)')"
+
+echo "$bookmark" "#" "$title" >> "$filepath/$filename"
+notify-send "Bookmark added!" "$bookmark is now saved to the file $filepath/$filename."

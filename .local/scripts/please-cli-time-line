@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+import datetime
+import json
+import os
+import random
+import shutil
+from os.path import expanduser
+
+import typer
+from rich.align import Align
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.rule import Rule
+from rich.table import Table
+
+app = typer.Typer()
+console = Console()
+
+COLOR_INFO = "cyan1 on purple3"
+COLOR_SUCCESS = "black on green"
+COLOR_WARNING = "bright_red on bright_white"
+COLOR_ERROR = "black on bright_red"
+
+
+
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
+def center_print(text, style: str = None, wrap: bool = False) -> None:
+    """Print text with center alignment.
+    Args:
+        text (Union[str, Rule, Table]): object to center align
+        style (str, optional): styling of the object. Defaults to None.
+    """
+    if wrap:
+        width = shutil.get_terminal_size().columns // 2
+    else:
+        width = shutil.get_terminal_size().columns
+
+    console.print(Align.center(text, style=style, width=width))
+
+def show_greeting() -> None:
+    """Greets the user."""
+    date_now = datetime.datetime.now()
+    user_name = "bot"
+
+    date_text = f"[#FFBF00] Hello {user_name}! It's {date_now.strftime('%d %B | %I:%M %p')}[/]"
+    console.rule(date_text, align="center", style="#FFBF00")
+
+
+def main() -> None:
+    show_greeting()
+
+main()

@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+
+sleep 0.2
+
+filepath="$HOME/.local/share/bot/snippets/"
+filename="emoji"
+
+xdotool type $(cat $filepath/$filename | dmenu -i -l 38 | cut -d' ' -f1)
